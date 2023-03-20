@@ -2,7 +2,7 @@
 
 ## Miembros
 
-- Patricia
+- [Patricia](https://github.com/patrimj)
 - Marina
 - [Ian](https://github.com/Hellrayser)
 - [Elena](https://github.com/ElenaRgC)
