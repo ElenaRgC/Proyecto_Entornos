@@ -4,8 +4,8 @@
 
 - Patricia
 - Marina
-- Ian
-- Elena
+- [Ian](https://github.com/Hellrayser)
+- [Elena](https://github.com/ElenaRgC)
 
 ## Requisitos mínimos del proyecto:
 
@@ -27,11 +27,7 @@ Mínimo tiene que tener una versión por cada uno de los puntos de descripción 
 ## Documentación
 
 - Se tiene que entregar una documentación técnica y una documentación de uso del cliente.
-
 - El proyecto entero en .zip.
-
 - Enlace a GITHUB.
-
 - Defensa del trabajo.
-
 - Planificación del proyecto con herramienta. Ej: Trello.
