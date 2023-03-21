@@ -3,7 +3,7 @@
 ## Miembros
 
 - [Patricia](https://github.com/patrimj)
-- Marina
+- [Marina](https://github.com/demon-for-arcangel)
 - [Ian](https://github.com/Hellrayser)
 - [Elena](https://github.com/ElenaRgC)
 
