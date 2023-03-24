@@ -14,8 +14,8 @@ fun main() {
 
     val nuevaPelea = Pelea("Nazeebo", "Valla")
     if (PeleaDAO.insertarPelea(nuevaPelea)) {
-        println("Se insertó correctamente la habilidad ${nuevaPelea.nombrePP}")
+        println("Se insertó correctamente la pelea ${nuevaPelea.nombrePP}")
     } else {
-        println("No se pudo insertar la categoria ${nuevaPelea.nombreJJ}")
+        println("No se pudo insertar la pelea ${nuevaPelea.nombreJJ}")
     }
 }
