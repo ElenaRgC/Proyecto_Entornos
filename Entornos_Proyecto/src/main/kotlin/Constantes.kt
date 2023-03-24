@@ -13,18 +13,18 @@ class Constantes {
         val elemento= "elemento"
         val descripcion= "descripcion"
         val daño= "daño"
-        val nombreP= "nombreP"
+        val nombreP= "nombre"
 
         val ficheroHabilidad="Habilidad.txt"
 
         // JEFE
         val jefe_sql_select = "SELECT * FROM jefe"
         val jefe_sql_insert = "INSERT INTO jefe (nombreJ,nivelJ,vida,dificultad,descripcionJ) VALUES (?, ?,?,?,?)"
-        val nombreJ="nombreJ"
-        val nivelJ= "nivelJ"
+        val nombreJ="nombre"
+        val nivelJ= "nivel"
         val vida= "vida"
         val dificultad= "dificultad"
-        val descripcionJ= "descripcionJ"
+        val descripcionJ= "descripcion"
 
         val ficheroJefe="Jefe.txt"
 
@@ -41,8 +41,8 @@ class Constantes {
         // PELEA --> foraneas???????????????
         val pelea_sql_select = "SELECT * FROM pelea"
         val pelea_sql_insert = "INSERT INTO pelea (nombrePP,nombreJJ,fecha) VALUES (?, ?,?)"
-        val nombrePP="nombrePP"
-        val nombreJJ="nombreJJ"
+        val nombrePP="nombre"
+        val nombreJJ="nombre"
         val fecha= "fecha"
 
 
