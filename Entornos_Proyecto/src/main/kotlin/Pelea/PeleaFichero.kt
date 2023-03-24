@@ -17,7 +17,7 @@ class PeleaFichero {
     }
     fun recuperar(n:String):ArrayList<Pelea>{
         var solucion = ArrayList<Pelea>()
-        var nombrePP:Int
+        var nombrePP:String
         var nombreJJ:String
         var fecha:String
 
@@ -26,12 +26,11 @@ class PeleaFichero {
 
         val lineas = file.readLines()
         for (linea in lineas) {
-            nombrePP = linea.substringAfter("nombre personaje=").substringBefore(", n").toInt()
-            nombreJJ = linea.substringAfter("nombre jefe='").substringBeforeLast("', f")
-            fecha = linea.substringAfter("fecha='").substringBeforeLast("'")
+            nombrePP = linea.substringAfter("nombre personaje=").substringBefore(", n")
+            nombreJJ = linea.substringAfter("nombre jefe='").substringBeforeLast("'")
 
 
-            var pelea = Pelea(nombrePP,nombreJJ,fecha)
+            var pelea = Pelea(nombrePP,nombreJJ)
             solucion.add(pelea)
         }
         return solucion

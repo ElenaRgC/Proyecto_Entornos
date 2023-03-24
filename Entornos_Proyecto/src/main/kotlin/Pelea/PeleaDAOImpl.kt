@@ -13,7 +13,7 @@ class PeleaDAOImpl: PeleaDAO{
         val rs = st?.executeQuery(query)
         val pelea = ArrayList<Pelea>()
         while (rs?.next() == true) {
-            val pelee = Pelea(rs.getInt(Constantes.nombrePP), rs.getString(Constantes.nombreJJ), rs.getString(Constantes.fecha))
+            val pelee = Pelea(rs.getString(Constantes.nombrePP), rs.getString(Constantes.nombreJJ))
             pelea.add(pelee)
         }
         st?.close()
