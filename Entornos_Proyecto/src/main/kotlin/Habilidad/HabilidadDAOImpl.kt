@@ -3,6 +3,7 @@ package Habilidad
 import ConexionBD
 import Constantes
 import java.sql.PreparedStatement
+import java.sql.SQLException
 
 class HabilidadDAOImpl: HabilidadDAO{
     private val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
@@ -13,7 +14,7 @@ class HabilidadDAOImpl: HabilidadDAO{
         val rs = st?.executeQuery(query)
         val habilidad = ArrayList<Habilidad>()
         while (rs?.next() == true) {
-            val habilidd = Habilidad(rs.getInt(Constantes.nivel), rs.getString(Constantes.nombre), rs.getString(Constantes.elemento), rs.getString(Constantes.descripcion),rs.getString(Constantes.dano),rs.getString(Constantes.nombreP))
+            val habilidd = Habilidad(rs.getInt(Constantes.nivel), rs.getString(Constantes.nombre), rs.getString(Constantes.elemento), rs.getString(Constantes.descripcion),rs.getInt(Constantes.dano),rs.getString(Constantes.nombreP))
             habilidad.add(habilidd)
         }
         st?.close()
@@ -30,11 +31,11 @@ class HabilidadDAOImpl: HabilidadDAO{
         ps = conexion.getPreparedStatement(query)
         for (i in c){
             try {
-                ps?.setInt(1, i.nivel)
-                ps?.setString(2, i.nombre)
+                ps?.setString(1, i.nombre)
+                ps?.setInt(2, i.nivel)
                 ps?.setString(3, i.elemento)
                 ps?.setString(4, i.descripcion)
-                ps?.setString(5, i.daño)
+                ps?.setInt(5, i.dano)
                 ps?.setString(6, i.nombreP)
                 result = ps?.executeUpdate()
             }catch (e:Exception){
@@ -45,5 +46,28 @@ class HabilidadDAOImpl: HabilidadDAO{
         ps?.close()
         conexion.desconectar()
         return listaNoInsertados
+    }
+
+    override fun insertarHabilidad(habilidad: Habilidad): Boolean {
+        var result: Int? = null
+        var ps: PreparedStatement? = null
+        try {
+            conexion.conectar()
+            val query = "INSERT INTO habilidad (nombre, nivel, elemento, descripcion, dano, nom_personaje) VALUES (?, ?, ?, ?, ?, ?)"
+            ps = conexion.getPreparedStatement(query)
+            ps?.setString(1, habilidad.nombre)
+            ps?.setInt(2, habilidad.nivel)
+            ps?.setString(3, habilidad.elemento)
+            ps?.setString(4, habilidad.descripcion)
+            ps?.setInt(5, habilidad.dano)
+            ps?.setString(6, habilidad.nombreP)
+            result = ps?.executeUpdate()
+        } catch (e: SQLException) {
+            println(e.message)
+        } finally {
+            ps?.close()
+            conexion.desconectar()
+        }
+        return result == 1
     }
 }

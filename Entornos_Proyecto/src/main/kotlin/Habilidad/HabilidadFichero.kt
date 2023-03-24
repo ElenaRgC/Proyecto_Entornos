@@ -20,7 +20,7 @@ class HabilidadFichero {
         var nivel:Int
         var elemento :String
         var descripcion:String
-        var daño:String
+        var dano:Int
         var nombreP:String
         val file = File(n)
 
@@ -30,10 +30,10 @@ class HabilidadFichero {
             nombre = linea.substringAfter("nombre='").substringBeforeLast("', e")
             elemento = linea.substringAfter("elemento='").substringBeforeLast("', d")
             descripcion = linea.substringAfter("descripcion='").substringBeforeLast("', d")
-            daño = linea.substringAfter("daño='").substringBeforeLast("', n")
+            dano = linea.substringAfter("daño='").substringBeforeLast("', n").toInt()
             nombreP = linea.substringAfter("nombre personaje='").substringBeforeLast("'")
 
-            var habilidad = Habilidad(nivel,nombre,elemento,descripcion,daño,nombreP)
+            var habilidad = Habilidad(nivel,nombre,elemento,descripcion,dano,nombreP)
             solucion.add(habilidad)
         }
         return solucion
