@@ -41,8 +41,8 @@ class Constantes {
         // PELEA --> foraneas???????????????
         val pelea_sql_select = "SELECT * FROM pelea"
         val pelea_sql_insert = "INSERT INTO pelea (nombrePP,nombreJJ,fecha) VALUES (?, ?,?)"
-        val nombrePP="nombre"
-        val nombreJJ="nombre"
+        val nombrePP="nom_personaje"
+        val nombreJJ="nom_jefe"
         val fecha= "fecha"
 
 
