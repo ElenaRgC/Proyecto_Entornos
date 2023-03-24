@@ -1,6 +1,6 @@
 class Constantes {
     companion object {
-        val url="jdbc:mysql://localhost/"
+        val url="jdbc:mysql://localhost/diablo"
         val user="root"
         val password=""
         val forname="com.mysql.cj.jdbc.Driver"
@@ -31,10 +31,10 @@ class Constantes {
         // PERSONAJE
         val personaje_sql_select = "SELECT * FROM personaje"
         val personaje_sql_insert = "INSERT INTO personaje (nombreP,nivelP,clase,descripcion) VALUES (?, ?,?,?)"
-        val nombrePPP="nombrePPP"
-        val nivelP= "nivelP"
+        val nombrePPP="nombre"
+        val nivelP= "nivel"
         val clase= "clase"
-        val descripcionP= "descripcionP"
+        val descripcionP= "descripcion"
 
         val ficheroPersonaje="Personaje.txt"
 
