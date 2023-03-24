@@ -18,4 +18,7 @@ fun main() {
         println("No se pudo insertar la habilidad ${nuevaHabilidad.nombre}")
     }
 
+    val nombreHabilidad = ""
+    println(HabilidadDAO.recibirDescripcion(nombreHabilidad))
+
 }

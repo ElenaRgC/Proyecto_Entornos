@@ -6,4 +6,6 @@ interface HabilidadDAO {
     fun insertarLista(c:ArrayList<Habilidad>):ArrayList<Habilidad>
 
     fun insertarHabilidad(habilidad: Habilidad): Boolean
+
+    fun recibirDescripcion(nombreHabilidad: String): String?
 }

@@ -70,4 +70,22 @@ class HabilidadDAOImpl: HabilidadDAO{
         }
         return result == 1
     }
+
+    override fun recibirDescripcion(nombreHabilidad: String): String? {
+        var result: String? = null
+        var ps: PreparedStatement? = null
+        try {
+            conexion.conectar()
+            val query = "SELECT descripcion FROM habilidad WHERE nombre = $nombreHabilidad"
+            val st = conexion.getStatement()
+            val rs = st?.executeQuery(query)
+            result = rs?.getString(Constantes.descripcion)
+        } catch (e: SQLException) {
+            println(e.message)
+        } finally {
+            ps?.close()
+            conexion.desconectar()
+        }
+        return result
+    }
 }
