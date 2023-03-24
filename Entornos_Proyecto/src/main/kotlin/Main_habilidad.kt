@@ -9,7 +9,6 @@ fun main() {
     val habilidad = HabilidadDAO.todosLasHabilidades()
     println("Lista de habilidades:")
     habilidad.forEach { println(it) }
-    println(habilidad)
 
     val nuevaHabilidad = Habilidad(1, "Licantropia","Fisico", "Mejora las habilidades de Hombre Lobo y Hombre Oso.", 0, "Giovanni")
     if (HabilidadDAO.insertarHabilidad(nuevaHabilidad)) {
