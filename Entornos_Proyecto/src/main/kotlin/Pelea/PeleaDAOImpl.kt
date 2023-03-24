@@ -34,7 +34,6 @@ class PeleaDAOImpl: PeleaDAO{
             try {
                 ps?.setString(1, i.nombrePP)
                 ps?.setString(2, i.nombreJJ)
-                ps?.setInt(3, i.fecha)
 
                 result = ps?.executeUpdate()
             }catch (e:Exception){
