@@ -76,10 +76,13 @@ class HabilidadDAOImpl: HabilidadDAO{
         var ps: PreparedStatement? = null
         try {
             conexion.conectar()
-            val query = "SELECT descripcion FROM habilidad WHERE nombre = $nombreHabilidad"
-            val st = conexion.getStatement()
-            val rs = st?.executeQuery(query)
-            result = rs?.getString(Constantes.descripcion)
+            val query = "SELECT descripcion FROM habilidad WHERE nombre = ?"
+            ps = conexion.getPreparedStatement(query)
+            ps?.setString(1, nombreHabilidad)
+            val rs = ps?.executeQuery()
+            if (rs?.next() == true) {
+                result = rs?.getString("descripcion")
+            }
         } catch (e: SQLException) {
             println(e.message)
         } finally {
