@@ -1,3 +1,4 @@
+import Personaje.Personaje
 import Personaje.PersonajeDAOImpl
 import Personaje.PersonajeFichero
 
@@ -10,4 +11,13 @@ fun main() {
     personajes.forEach { println(it) }
     println(personajes)
 
+    val nuevoPersonaje = Personaje("Elena",87,"Maga","La señora del fuego")
+    if (PersonajeDAO.insertarPersonaje(nuevoPersonaje)) {
+        println("Se insertó correctamente el nuevo personaje ${nuevoPersonaje.nombrePPP}")
+    } else {
+        println("No se pudo insertar la categoria ${nuevoPersonaje.nombrePPP}")
+    }
+
 }
+
+

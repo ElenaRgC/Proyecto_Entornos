@@ -1,6 +1,8 @@
 package Personaje
 import ConexionBD
+import Habilidad.Habilidad
 import java.sql.PreparedStatement
+import java.sql.SQLException
 
 class PersonajeDAOImpl:PersonajeDAO {
     private val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
@@ -11,7 +13,7 @@ class PersonajeDAOImpl:PersonajeDAO {
         val rs = st?.executeQuery(query)
         val personaje = ArrayList<Personaje>()
         while (rs?.next() == true) {
-            val perso = Personaje(rs.getInt(Constantes.nivelP), rs.getString(Constantes.nombrePPP), rs.getString(Constantes.clase),rs.getString(Constantes.descripcionP))
+            val perso = Personaje(rs.getString(Constantes.nombrePPP),rs.getInt(Constantes.nivelP),  rs.getString(Constantes.clase),rs.getString(Constantes.descripcionP))
             personaje.add(perso)
         }
         st?.close()
@@ -43,4 +45,26 @@ class PersonajeDAOImpl:PersonajeDAO {
         conexion.desconectar()
         return listaNoInsertados
     }
+
+    override fun insertarPersonaje(personaje: Personaje): Boolean {
+        var result: Int? = null
+        var ps: PreparedStatement? = null
+        try {
+            conexion.conectar()
+            val query = "INSERT INTO personaje (nombre, nivel, clase, descripcion) VALUES (?, ?, ?, ?)"
+            ps = conexion.getPreparedStatement(query)
+            ps?.setString(1, personaje.nombrePPP)
+            ps?.setInt(2, personaje.nivelP)
+            ps?.setString(3, personaje.clase)
+            ps?.setString(4, personaje.descripcionP)
+            result = ps?.executeUpdate()
+        } catch (e: SQLException) {
+            println(e.message)
+        } finally {
+            ps?.close()
+            conexion.desconectar()
+        }
+        return result == 1
+    }
 }
+

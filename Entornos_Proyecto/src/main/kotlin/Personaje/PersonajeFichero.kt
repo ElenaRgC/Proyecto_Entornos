@@ -33,7 +33,7 @@ class PersonajeFichero {
             descripcionP = linea.substringAfter("descripcion='").substringBeforeLast("'")
 
 
-            var personaje = Personaje(nivelP,nombrePPP,clase,descripcionP)
+            var personaje = Personaje(nombrePPP,nivelP,clase,descripcionP)
             solucion.add(personaje)
         }
         return solucion
