@@ -1,9 +1,11 @@
 import java.sql.*
 
 class ConexionBD {
-    var url = ""
-    var user = ""
-    var password = ""
+    var url = Constantes.url
+    var user = Constantes.user
+    var password = Constantes.password
+    val connection = DriverManager.getConnection(url, user, password)
+
     var conn: Connection? = null
 
     constructor(ur:String,us:String,pa:String){
