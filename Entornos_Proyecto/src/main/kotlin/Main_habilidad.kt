@@ -9,7 +9,7 @@ fun main() {
     val HabilidadFichero = HabilidadFichero()
 
     val habilidad = HabilidadDAO.todosLasHabilidades()
-    println("Lista de personajes:")
+    println("Lista de habilidades:")
     habilidad.forEach { println(it) }
     println(habilidad)
 
