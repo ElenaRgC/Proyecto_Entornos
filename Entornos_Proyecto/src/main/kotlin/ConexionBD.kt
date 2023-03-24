@@ -1,9 +1,11 @@
 import java.sql.*
 
 class ConexionBD {
-    var url = ""
-    var user = ""
+    var url = "jdbc:mysql://localhost/supermercado"
+    var user = "root"
     var password = ""
+    val connection = DriverManager.getConnection(url, user, password)
+
     var conn: Connection? = null
 
     constructor(ur:String,us:String,pa:String){

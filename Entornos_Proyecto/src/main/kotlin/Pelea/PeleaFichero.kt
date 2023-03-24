@@ -26,7 +26,7 @@ class PeleaFichero {
 
         val lineas = file.readLines()
         for (linea in lineas) {
-            nombrePP = linea.substringAfter("nombre personaje=").substringBefore(",").toInt()
+            nombrePP = linea.substringAfter("nombre personaje=").substringBefore(", n").toInt()
             nombreJJ = linea.substringAfter("nombre jefe='").substringBeforeLast("', f")
             fecha = linea.substringAfter("fecha='").substringBeforeLast("'")
 
