@@ -1,9 +1,6 @@
 import Habilidad.HabilidadDAOImpl
 import Habilidad.HabilidadFichero
 
-val HabilidadDAO = HabilidadDAOImpl()
-val HabilidadFichero = HabilidadFichero()
-
 fun main() {
     val HabilidadDAO = HabilidadDAOImpl()
     val HabilidadFichero = HabilidadFichero()
