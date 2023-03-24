@@ -2,7 +2,9 @@ package Pelea
 
 import ConexionBD
 import Constantes
+import Habilidad.Habilidad
 import java.sql.PreparedStatement
+import java.sql.SQLException
 
 class PeleaDAOImpl: PeleaDAO{
     private val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
@@ -32,7 +34,6 @@ class PeleaDAOImpl: PeleaDAO{
             try {
                 ps?.setString(1, i.nombrePP)
                 ps?.setString(2, i.nombreJJ)
-                ps?.setInt(3, i.fecha)
 
                 result = ps?.executeUpdate()
             }catch (e:Exception){
@@ -44,4 +45,23 @@ class PeleaDAOImpl: PeleaDAO{
         conexion.desconectar()
         return listaNoInsertados
     }
+    override fun insertarPelea(pelea: Pelea): Boolean {
+        var result: Int? = null
+        var ps: PreparedStatement? = null
+        try {
+            conexion.conectar()
+            val query = "INSERT INTO habilidad (nombrePP, nombreJJ) VALUES (?, ?,)"
+            ps = conexion.getPreparedStatement(query)
+            ps?.setString(1, pelea.nombrePP)
+            ps?.setString(2, pelea.nombreJJ)
+            result = ps?.executeUpdate()
+        } catch (e: SQLException) {
+            println(e.message)
+        } finally {
+            ps?.close()
+            conexion.desconectar()
+        }
+        return result == 1
+    }
+
 }

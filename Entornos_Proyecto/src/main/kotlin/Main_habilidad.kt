@@ -15,7 +15,7 @@ fun main() {
     if (HabilidadDAO.insertarHabilidad(nuevaHabilidad)) {
         println("Se insertó correctamente la habilidad ${nuevaHabilidad.nombre}")
     } else {
-        println("No se pudo insertar la categoria ${nuevaHabilidad.nombre}")
+        println("No se pudo insertar la habilidad ${nuevaHabilidad.nombre}")
     }
 
 }

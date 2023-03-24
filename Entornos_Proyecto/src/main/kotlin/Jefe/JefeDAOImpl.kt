@@ -2,8 +2,10 @@ package Jefe
 
 import ConexionBD
 import Constantes
+import Habilidad.Habilidad
 import Jefe.Jefe
 import java.sql.PreparedStatement
+import java.sql.SQLException
 
 class JefeDAOImpl:JefeDAO {
 
@@ -47,6 +49,29 @@ class JefeDAOImpl:JefeDAO {
         ps?.close()
         conexion.desconectar()
         return listaNoInsertados
+    }
+
+    override fun insertarJefe(jefe: Jefe): Boolean {
+        var result: Int? = null
+        var ps: PreparedStatement? = null
+        try {
+            conexion.conectar()
+            val query = "INSERT INTO jefe (nombre, nivel, vida, dificultad, descripcion) VALUES (?, ?, ?, ?, ?)"
+            ps = conexion.getPreparedStatement(query)
+            ps?.setString(1, jefe.nombreJ)
+            ps?.setInt(2, jefe.nivelJ)
+            ps?.setInt(3, jefe.vida)
+            ps?.setString(4, jefe.dificultad)
+            ps?.setString(5, jefe.descripcionJ)
+
+            result = ps?.executeUpdate()
+        } catch (e: SQLException) {
+            println(e.message)
+        } finally {
+            ps?.close()
+            conexion.desconectar()
+        }
+        return result == 1
     }
 
 }

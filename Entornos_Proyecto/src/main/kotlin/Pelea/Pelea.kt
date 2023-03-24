@@ -3,7 +3,6 @@ package Pelea
 class Pelea {
     var nombrePP:String=""
     var nombreJJ:String=""
-    var fecha:Int=0
 
 
     constructor(np:String, nj:String ){
