@@ -12,7 +12,7 @@ class Constantes {
         val nivel= "nivel"
         val elemento= "elemento"
         val descripcion= "descripcion"
-        val daño= "daño"
+        val dano= "dano"
         val nombreP= "nombre"
 
         val ficheroHabilidad="Habilidad.txt"

@@ -13,7 +13,7 @@ class HabilidadDAOImpl: HabilidadDAO{
         val rs = st?.executeQuery(query)
         val habilidad = ArrayList<Habilidad>()
         while (rs?.next() == true) {
-            val habilidd = Habilidad(rs.getInt(Constantes.nivel), rs.getString(Constantes.nombre), rs.getString(Constantes.elemento), rs.getString(Constantes.descripcion),rs.getString(Constantes.daño),rs.getString(Constantes.nombreP))
+            val habilidd = Habilidad(rs.getInt(Constantes.nivel), rs.getString(Constantes.nombre), rs.getString(Constantes.elemento), rs.getString(Constantes.descripcion),rs.getString(Constantes.dano),rs.getString(Constantes.nombreP))
             habilidad.add(habilidd)
         }
         st?.close()
