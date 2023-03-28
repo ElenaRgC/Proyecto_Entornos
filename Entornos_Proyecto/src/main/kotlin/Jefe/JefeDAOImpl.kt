@@ -74,4 +74,24 @@ class JefeDAOImpl:JefeDAO {
         return result == 1
     }
 
+    override fun recibirDescripcion(nombreJefe: String): String? {
+        var result: String? = null
+        var ps: PreparedStatement? = null
+        try {
+            conexion.conectar()
+            val query = "SELECT descripcion FROM jefe WHERE nombre = ?"
+            ps = conexion.getPreparedStatement(query)
+            ps?.setString(1, nombreJefe)
+            val rs = ps?.executeQuery()
+            if (rs?.next() == true) {
+                result = rs?.getString("descripcion")
+            }
+        } catch (e: SQLException) {
+            println(e.message)
+        } finally {
+            ps?.close()
+            conexion.desconectar()
+        }
+        return result
+    }
 }

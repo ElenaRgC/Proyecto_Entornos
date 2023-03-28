@@ -19,4 +19,7 @@ fun main() {
     } else {
         println("No se pudo insertar el jefe ${nuevoJefe.nombreJ}")
     }
+
+    val nombreJefe = "Madre del Cubil"
+    println("$nombreJefe: " + JefeDAO.recibirDescripcion(nombreJefe))
 }
