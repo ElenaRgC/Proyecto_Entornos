@@ -42,30 +42,55 @@ fun main(args: Array<String>) {
 
     when (tablaUsuario) {
         "habilidad" -> {
-            var objetoUsuario = HabilidadDAOImpl()
+            objetoUsuario = HabilidadDAOImpl()
             var habilidad = objetoUsuario.todosLasHabilidades()
             println("Lista de habilidades:")
             habilidad.forEach { println(it) }
             println()
         }
-        "jefe" -> {objetoUsuario = JefeDAOImpl()}
-        "pelea" -> {objetoUsuario = PeleaDAOImpl()}
-        "personaje" -> {objetoUsuario = PersonajeDAOImpl()}
+        "jefe" -> {
+            objetoUsuario = JefeDAOImpl()
+            var jefe = objetoUsuario.todosLosJefes()
+            println("Lista de jefes:")
+            jefe.forEach { println(it) }
+            println()
+        }
+        "pelea" -> {
+            objetoUsuario = PeleaDAOImpl()
+            var pelea = objetoUsuario.todosLasPeleas()
+            println("Lista de peleas:")
+            pelea.forEach {println(it)}
+            println()
+        }
+        "personaje" -> {
+            objetoUsuario = PersonajeDAOImpl()
+            var personaje = objetoUsuario.todosLosPersonajes()
+            println("Lista de personajes:")
+            personaje.forEach {println(it)}
+            println()
+        }
         else -> println("Seleccione una tabla de la lista anterior.")
     }
 
-
-
-    print("¿Qué quieres hacer con la tabla $tablaUsuario?")
-    println(" (Introduzca la palabra indicada en mayúsculas.)")
-    println("ANADIR un/a $tablaUsuario nuevo/a.")
-    println("BORRAR una fila.")
-    println("MODIFICAR un campo.")
+    print("¿Qué quieres hacer con la tabla ${tablaUsuario.uppercase()}?")
+    println(" (Introduzca la palabra indicada en mayúsculas o su número correspondiente.)")
+    println("1. ANADIR un/a $tablaUsuario nuevo/a.")
+    println("2. BORRAR una fila.")
+    println("3. MODIFICAR un campo.")
     println("\n O también:")
     println("CAMBIAR a otra tabla.")
     println("SALIR del programa.")
 
-    readln()
+    var opcionUsuario = readln().trim().lowercase()
+
+    when (opcionUsuario) {
+        "anadir", "1" -> {}
+        "borrar", "2" -> {}
+        "modificar", "3" -> {}
+        "cambiar" -> {}
+        "salir" -> {}
+        else -> println("Seleccione una opción de la lista anterior.")
+    }
 
 }
 
