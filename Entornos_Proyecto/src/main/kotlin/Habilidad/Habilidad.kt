@@ -19,6 +19,6 @@ class Habilidad {
     }
 
     override fun toString(): String {
-        return "Habilidad.Habilidad(nivel=$nivel, nombre='$nombre', elemento='$elemento', descripcion='$descripcion', daño='$dano', nombreP='$nombreP')"
+        return "$nombre: Nivel=$nivel, Elemento='$elemento', Descripcion='$descripcion', Daño='$dano', Nombre Personaje='$nombreP')"
     }
 }

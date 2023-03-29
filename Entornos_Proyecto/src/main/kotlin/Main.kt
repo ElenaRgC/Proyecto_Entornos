@@ -41,19 +41,31 @@ fun main(args: Array<String>) {
     var objetoUsuario = Any()
 
     when (tablaUsuario) {
-        "habilidad" -> {objetoUsuario = HabilidadDAOImpl()}
+        "habilidad" -> {
+            var objetoUsuario = HabilidadDAOImpl()
+            var habilidad = objetoUsuario.todosLasHabilidades()
+            println("Lista de habilidades:")
+            habilidad.forEach { println(it) }
+            println()
+        }
         "jefe" -> {objetoUsuario = JefeDAOImpl()}
         "pelea" -> {objetoUsuario = PeleaDAOImpl()}
         "personaje" -> {objetoUsuario = PersonajeDAOImpl()}
         else -> println("Seleccione una tabla de la lista anterior.")
     }
 
-    objetoUsuario.todasLasHabilidades()
 
-    println("¿Qué quieres hacer con la tabla $tablaUsuario?")
-    println("Introduzca la palabra indicada en mayúsculas.")
+
+    print("¿Qué quieres hacer con la tabla $tablaUsuario?")
+    println(" (Introduzca la palabra indicada en mayúsculas.)")
     println("ANADIR un/a $tablaUsuario nuevo/a.")
     println("BORRAR una fila.")
+    println("MODIFICAR un campo.")
+    println("\n O también:")
+    println("CAMBIAR a otra tabla.")
+    println("SALIR del programa.")
+
+    readln()
 
 }
 
