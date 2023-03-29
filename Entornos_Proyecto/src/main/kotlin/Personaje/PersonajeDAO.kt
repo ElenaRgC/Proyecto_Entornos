@@ -5,4 +5,6 @@ interface PersonajeDAO {
     fun insertarLista(c:ArrayList<Personaje>):ArrayList<Personaje>
 
     fun insertarPersonaje(personaje: Personaje): Boolean
+
+    fun recibirDescripcion(nombrePersonaje: String): String?
 }
