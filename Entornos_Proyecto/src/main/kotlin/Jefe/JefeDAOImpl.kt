@@ -10,7 +10,7 @@ import java.sql.SQLException
 class JefeDAOImpl:JefeDAO {
 
     private val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
-    override fun todosLosJefes(): List<Jefe> {
+    override fun todosLosCampos(): List<Jefe> {
         conexion.conectar()
         val query = Constantes.jefe_sql_select
         val st = conexion.getStatement()
@@ -51,7 +51,7 @@ class JefeDAOImpl:JefeDAO {
         return listaNoInsertados
     }
 
-    override fun insertarJefe(jefe: Jefe): Boolean {
+    override fun insertarFila(jefe: Jefe): Boolean {
         var result: Int? = null
         var ps: PreparedStatement? = null
         try {
