@@ -64,4 +64,16 @@ class PeleaDAOImpl: PeleaDAO{
         return result == 1
     }
 
+    override fun borrarFila(nombre: String): Boolean {
+        conexion.conectar()
+        val query = "DELETE FROM pelea WHERE nom_personaje = ? OR nom_jefe = ?"
+        val ps = conexion.getPreparedStatement(query)
+        ps?.setString(1, nombre)
+        ps?.setString(2, nombre)
+        val result = ps?.executeUpdate()
+        ps?.close()
+        conexion.desconectar()
+        return result == 1
+    }
+
 }

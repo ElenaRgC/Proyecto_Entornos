@@ -8,4 +8,6 @@ interface HabilidadDAO {
     fun insertarHabilidad(habilidad: Habilidad): Boolean
 
     fun recibirDescripcion(nombreHabilidad: String): String?
+
+    fun borrarFila(nombre: String): Boolean
 }

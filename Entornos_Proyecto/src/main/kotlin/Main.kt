@@ -84,8 +84,17 @@ fun main(args: Array<String>) {
     var opcionUsuario = readln().trim().lowercase()
 
     when (opcionUsuario) {
-        "anadir", "1" -> {}
-        "borrar", "2" -> {}
+        "anadir", "1" -> {
+        }
+        "borrar", "2" -> {
+            println("Introduce el nombre del/de la $tablaUsuario que quieres borrar.")
+            var nombreElemento = readln().trim().lowercase()
+            if(objetoUsuario.borrarFila(nombreElemento)) {
+                println("$nombreElemento se ha borrado correctamente de la tabla $tablaUsuario.")
+            } else {
+                println("No ha podido eliminarse $nombreElemento de la tabla $tablaUsuario.")
+            }
+        }
         "modificar", "3" -> {}
         "cambiar" -> {}
         "salir" -> {}

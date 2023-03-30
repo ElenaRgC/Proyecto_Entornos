@@ -66,5 +66,16 @@ class PersonajeDAOImpl:PersonajeDAO {
         }
         return result == 1
     }
+
+    override fun borrarFila(nombre: String): Boolean {
+        conexion.conectar()
+        val query = "DELETE FROM personaje WHERE nombre = ?"
+        val ps = conexion.getPreparedStatement(query)
+        ps?.setString(1, nombre)
+        val result = ps?.executeUpdate()
+        ps?.close()
+        conexion.desconectar()
+        return result == 1
+    }
 }
 

@@ -7,4 +7,5 @@ interface PeleaDAO {
     fun insertarLista(c:ArrayList<Pelea>):ArrayList<Pelea>
     fun insertarPelea(pelea: Pelea): Boolean
 
+    fun borrarFila(nombre: String): Boolean
 }

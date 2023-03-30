@@ -94,4 +94,15 @@ class JefeDAOImpl:JefeDAO {
         }
         return result
     }
+
+    override fun borrarFila(nombre: String): Boolean {
+        conexion.conectar()
+        val query = "DELETE FROM jefe WHERE nombre = ?"
+        val ps = conexion.getPreparedStatement(query)
+        ps?.setString(1, nombre)
+        val result = ps?.executeUpdate()
+        ps?.close()
+        conexion.desconectar()
+        return result == 1
+    }
 }
