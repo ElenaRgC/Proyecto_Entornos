@@ -51,7 +51,7 @@ class HabilidadDAOImpl: HabilidadDAO, Implementacion() {
         return listaNoInsertados
     }
 
-    override fun insertarCampo(habilidad: Habilidad): Boolean {
+    override fun insertarFila(habilidad: Habilidad): Boolean {
         var result: Int? = null
         var ps: PreparedStatement? = null
         try {

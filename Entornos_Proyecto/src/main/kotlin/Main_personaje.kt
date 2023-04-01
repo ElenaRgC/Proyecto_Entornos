@@ -17,6 +17,10 @@ fun main() {
     } else {
         println("No se pudo insertar la categoria ${nuevoPersonaje.nombrePPP}")
     }
+    
+    val nombrePersonaje = "Giovanni"
+
+    println("$nombrePersonaje: " + PersonajeDAO.recibirDescripcion(nombrePersonaje))
 
 }
 
