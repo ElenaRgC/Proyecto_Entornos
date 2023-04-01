@@ -7,7 +7,7 @@ import java.sql.SQLException
 
 class HabilidadDAOImpl: HabilidadDAO{
     private val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
-    override fun todosLasHabilidades(): List<Habilidad> {
+    override fun todosLosCampos(): List<Habilidad> {
         conexion.conectar()
         val query = Constantes.habilidad_sql_select
         val st = conexion.getStatement()
@@ -48,7 +48,7 @@ class HabilidadDAOImpl: HabilidadDAO{
         return listaNoInsertados
     }
 
-    override fun insertarHabilidad(habilidad: Habilidad): Boolean {
+    override fun insertarFila(habilidad: Habilidad): Boolean {
         var result: Int? = null
         var ps: PreparedStatement? = null
         try {

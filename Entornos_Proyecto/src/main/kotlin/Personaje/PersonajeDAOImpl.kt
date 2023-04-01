@@ -6,7 +6,7 @@ import java.sql.SQLException
 
 class PersonajeDAOImpl:PersonajeDAO {
     private val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
-    override fun todosLosPersonajes(): List<Personaje> {
+    override fun todosLosCampos(): List<Personaje> {
         conexion.conectar()
         val query = Constantes.personaje_sql_select
         val st = conexion.getStatement()
@@ -46,7 +46,7 @@ class PersonajeDAOImpl:PersonajeDAO {
         return listaNoInsertados
     }
 
-    override fun insertarPersonaje(personaje: Personaje): Boolean {
+    override fun insertarFila(personaje: Personaje): Boolean {
         var result: Int? = null
         var ps: PreparedStatement? = null
         try {
@@ -66,7 +66,8 @@ class PersonajeDAOImpl:PersonajeDAO {
         }
         return result == 1
     }
-    override fun recibirDescripcion(nombrePersonaje:  String): String? {
+
+    override fun recibirDescripcion(nombrePersonaje: String): String? {
         var result: String? = null
         var ps: PreparedStatement? = null
         try {

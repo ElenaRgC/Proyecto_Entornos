@@ -6,18 +6,20 @@ fun main() {
     val PersonajeDAO = PersonajeDAOImpl()
     val PersonajeFichero = PersonajeFichero()
 
-    val personajes = PersonajeDAO.todosLosPersonajes()
+    val personajes = PersonajeDAO.todosLosCampos()
     println("Lista de personajes:")
     personajes.forEach { println(it) }
     println(personajes)
 
     val nuevoPersonaje = Personaje("Elena",87,"Maga","La señora del fuego")
-    if (PersonajeDAO.insertarPersonaje(nuevoPersonaje)) {
+    if (PersonajeDAO.insertarFila(nuevoPersonaje)) {
         println("Se insertó correctamente el nuevo personaje ${nuevoPersonaje.nombrePPP}")
     } else {
         println("No se pudo insertar la categoria ${nuevoPersonaje.nombrePPP}")
     }
-    val nombrePersonaje = "Hellrayser"
+    
+    val nombrePersonaje = "Giovanni"
+
     println("$nombrePersonaje: " + PersonajeDAO.recibirDescripcion(nombrePersonaje))
 
 }
