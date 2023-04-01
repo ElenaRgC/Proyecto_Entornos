@@ -1,3 +1,5 @@
+package Clases
+
 class Constantes {
     companion object {
         val url="jdbc:mysql://localhost/diablo"

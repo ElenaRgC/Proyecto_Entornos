@@ -1,13 +1,9 @@
 package Habilidad
 
-import Habilidad.Habilidad
 interface HabilidadDAO {
-    fun todosLasHabilidades(): List<Habilidad>
+    fun todosLosCampos(): List<Habilidad>
     fun insertarLista(c:ArrayList<Habilidad>):ArrayList<Habilidad>
-
-    fun insertarHabilidad(habilidad: Habilidad): Boolean
-
+    fun insertarCampo(habilidad: Habilidad): Boolean
     fun recibirDescripcion(nombreHabilidad: String): String?
-
     fun borrarFila(nombre: String): Boolean
 }

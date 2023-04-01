@@ -1,11 +1,8 @@
 package Pelea
 
-import Pelea.Pelea
-
 interface PeleaDAO {
-    fun todosLasPeleas(): List<Pelea>
+    fun todosLosCampos(): List<Pelea>
     fun insertarLista(c:ArrayList<Pelea>):ArrayList<Pelea>
-    fun insertarPelea(pelea: Pelea): Boolean
-
+    fun insertarFila(pelea: Pelea): Boolean
     fun borrarFila(nombre: String): Boolean
 }

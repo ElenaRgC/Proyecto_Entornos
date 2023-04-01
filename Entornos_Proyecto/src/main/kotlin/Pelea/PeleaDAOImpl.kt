@@ -1,14 +1,14 @@
 package Pelea
 
-import ConexionBD
-import Constantes
-import Habilidad.Habilidad
+import Clases.ConexionBD
+import Clases.Constantes
+import Clases.Implementacion
 import java.sql.PreparedStatement
 import java.sql.SQLException
 
-class PeleaDAOImpl: PeleaDAO{
+class PeleaDAOImpl: PeleaDAO, Implementacion(){
     private val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
-    override fun todosLasPeleas(): List<Pelea> {
+    override fun todosLosCampos(): List<Pelea> {
         conexion.conectar()
         val query = Constantes.pelea_sql_select
         val st = conexion.getStatement()
@@ -45,7 +45,7 @@ class PeleaDAOImpl: PeleaDAO{
         conexion.desconectar()
         return listaNoInsertados
     }
-    override fun insertarPelea(pelea: Pelea): Boolean {
+    override fun insertarFila(pelea: Pelea): Boolean {
         var result: Int? = null
         var ps: PreparedStatement? = null
         try {

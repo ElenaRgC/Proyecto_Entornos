@@ -1,23 +1,23 @@
 package Jefe
 
-import ConexionBD
-import Constantes
-import Habilidad.Habilidad
-import Jefe.Jefe
+import Clases.ConexionBD
+import Clases.Constantes
+import Clases.Implementacion
 import java.sql.PreparedStatement
 import java.sql.SQLException
 
-class JefeDAOImpl:JefeDAO {
+class JefeDAOImpl:JefeDAO, Implementacion() {
 
     private val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
-    override fun todosLosJefes(): List<Jefe> {
+    override fun todosLosCampos(): List<Jefe> {
         conexion.conectar()
         val query = Constantes.jefe_sql_select
         val st = conexion.getStatement()
         val rs = st?.executeQuery(query)
         val jefe = ArrayList<Jefe>()
         while (rs?.next() == true) {
-            val jefee = Jefe(rs.getInt(Constantes.nivelJ), rs.getString(Constantes.nombreJ), rs.getInt(Constantes.vida), rs.getString(Constantes.dificultad),rs.getString(Constantes.descripcionJ))
+            val jefee = Jefe(rs.getInt(Constantes.nivelJ), rs.getString(Constantes.nombreJ), rs.getInt(Constantes.vida), rs.getString(
+                Constantes.dificultad),rs.getString(Constantes.descripcionJ))
             jefe.add(jefee)
         }
         st?.close()
@@ -51,7 +51,7 @@ class JefeDAOImpl:JefeDAO {
         return listaNoInsertados
     }
 
-    override fun insertarJefe(jefe: Jefe): Boolean {
+    override fun insertarFila(jefe: Jefe): Boolean {
         var result: Int? = null
         var ps: PreparedStatement? = null
         try {

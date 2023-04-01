@@ -1,20 +1,23 @@
 package Habilidad
 
-import ConexionBD
-import Constantes
+import Clases.ConexionBD
+import Clases.Constantes
+import Clases.Implementacion
 import java.sql.PreparedStatement
 import java.sql.SQLException
 
-class HabilidadDAOImpl: HabilidadDAO{
+class HabilidadDAOImpl: HabilidadDAO, Implementacion() {
     private val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
-    override fun todosLasHabilidades(): List<Habilidad> {
+    override fun todosLosCampos(): List<Habilidad> {
         conexion.conectar()
         val query = Constantes.habilidad_sql_select
         val st = conexion.getStatement()
         val rs = st?.executeQuery(query)
         val habilidad = ArrayList<Habilidad>()
         while (rs?.next() == true) {
-            val habilidd = Habilidad(rs.getInt(Constantes.nivel), rs.getString(Constantes.nombre), rs.getString(Constantes.elemento), rs.getString(Constantes.descripcion),rs.getInt(Constantes.dano),rs.getString(Constantes.nombreP))
+            val habilidd = Habilidad(rs.getInt(Constantes.nivel), rs.getString(Constantes.nombre), rs.getString(
+                Constantes.elemento), rs.getString(Constantes.descripcion),rs.getInt(Constantes.dano),rs.getString(
+                Constantes.nombreP))
             habilidad.add(habilidd)
         }
         st?.close()
@@ -48,7 +51,7 @@ class HabilidadDAOImpl: HabilidadDAO{
         return listaNoInsertados
     }
 
-    override fun insertarHabilidad(habilidad: Habilidad): Boolean {
+    override fun insertarCampo(habilidad: Habilidad): Boolean {
         var result: Int? = null
         var ps: PreparedStatement? = null
         try {

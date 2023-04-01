@@ -1,19 +1,21 @@
 package Personaje
-import ConexionBD
-import Habilidad.Habilidad
+import Clases.Constantes
+import Clases.ConexionBD
+import Clases.Implementacion
 import java.sql.PreparedStatement
 import java.sql.SQLException
 
-class PersonajeDAOImpl:PersonajeDAO {
+class PersonajeDAOImpl:PersonajeDAO, Implementacion() {
     private val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
-    override fun todosLosPersonajes(): List<Personaje> {
+    override fun todosLosCampos(): List<Personaje> {
         conexion.conectar()
         val query = Constantes.personaje_sql_select
         val st = conexion.getStatement()
         val rs = st?.executeQuery(query)
         val personaje = ArrayList<Personaje>()
         while (rs?.next() == true) {
-            val perso = Personaje(rs.getString(Constantes.nombrePPP),rs.getInt(Constantes.nivelP),  rs.getString(Constantes.clase),rs.getString(Constantes.descripcionP))
+            val perso = Personaje(rs.getString(Constantes.nombrePPP),rs.getInt(Constantes.nivelP),  rs.getString(
+                Constantes.clase),rs.getString(Constantes.descripcionP))
             personaje.add(perso)
         }
         st?.close()
@@ -46,7 +48,7 @@ class PersonajeDAOImpl:PersonajeDAO {
         return listaNoInsertados
     }
 
-    override fun insertarPersonaje(personaje: Personaje): Boolean {
+    override fun insertarFila(personaje: Personaje): Boolean {
         var result: Int? = null
         var ps: PreparedStatement? = null
         try {

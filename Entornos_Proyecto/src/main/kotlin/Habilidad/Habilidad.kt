@@ -1,6 +1,8 @@
 package Habilidad
 
-class Habilidad {
+import Clases.Fila
+
+class Habilidad: Fila {
     var nivel:Int =0
     var nombre:String=""
     var elemento:String=""
@@ -19,7 +21,7 @@ class Habilidad {
     }
 
     override fun toString(): String {
-        return "$nombre: Nivel=$nivel, Elemento='$elemento', Descripcion='$descripcion', Daño='$dano', Nombre Personaje='$nombreP')"
+        return "$nombre: Nivel= $nivel, Elemento= $elemento, Descripcion= $descripcion, Daño= $dano, Personaje= $nombreP"
     }
 
 }

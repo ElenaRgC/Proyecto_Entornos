@@ -1,6 +1,8 @@
 package Jefe
 
-class Jefe {
+import Clases.Fila
+
+class Jefe: Fila {
     var nivelJ:Int =0
     var nombreJ:String=""
     var vida:Int =0
@@ -17,6 +19,6 @@ class Jefe {
     }
 
     override fun toString(): String {
-        return "Jefe.Jefe(nivel=$nivelJ, nombre='$nombreJ', vida='$vida', dificultad='$dificultad', descripcion='$descripcionJ')"
+        return "Jefe: $nombreJ, Nivel= $nivelJ, Vida=$vida, Dificultad= $dificultad, Descripcion= $descripcionJ"
     }
 }
