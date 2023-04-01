@@ -24,32 +24,6 @@ class HabilidadDAOImpl: HabilidadDAO, Implementacion() {
         conexion.desconectar()
         return habilidad
     }
-    override fun insertarLista(c:ArrayList<Habilidad>):ArrayList<Habilidad>{
-        conexion.conectar()
-        var result:Int?=null
-        var ps: PreparedStatement? = null
-        var listaNoInsertados = ArrayList<Habilidad>()
-
-        val query = Constantes.habilidad_sql_insert
-        ps = conexion.getPreparedStatement(query)
-        for (i in c){
-            try {
-                ps?.setString(1, i.nombre)
-                ps?.setInt(2, i.nivel)
-                ps?.setString(3, i.elemento)
-                ps?.setString(4, i.descripcion)
-                ps?.setInt(5, i.dano)
-                ps?.setString(6, i.nombreP)
-                result = ps?.executeUpdate()
-            }catch (e:Exception){
-                //println("no Se puede insertar ${i.codigo}")
-                listaNoInsertados.add(i)
-            }
-        }
-        ps?.close()
-        conexion.desconectar()
-        return listaNoInsertados
-    }
 
     override fun insertarFila(habilidad: Habilidad): Boolean {
         var result: Int? = null

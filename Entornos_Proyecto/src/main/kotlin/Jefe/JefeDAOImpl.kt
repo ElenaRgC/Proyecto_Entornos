@@ -24,32 +24,6 @@ class JefeDAOImpl:JefeDAO, Implementacion() {
         conexion.desconectar()
         return jefe
     }
-    override fun insertarLista(c:ArrayList<Jefe>):ArrayList<Jefe>{
-        conexion.conectar()
-        var result:Int?=null
-        var ps: PreparedStatement? = null
-        var listaNoInsertados = ArrayList<Jefe>()
-
-        val query = Constantes.jefe_sql_insert
-        ps = conexion.getPreparedStatement(query)
-        for (i in c){
-            try {
-                ps?.setInt(1, i.nivelJ)
-                ps?.setString(2, i.nombreJ)
-                ps?.setInt(3, i.vida)
-                ps?.setString(4, i.dificultad)
-                ps?.setString(5, i.descripcionJ)
-
-                result = ps?.executeUpdate()
-            }catch (e:Exception){
-                //println("no Se puede insertar ${i.codigo}")
-                listaNoInsertados.add(i)
-            }
-        }
-        ps?.close()
-        conexion.desconectar()
-        return listaNoInsertados
-    }
 
     override fun insertarFila(jefe: Jefe): Boolean {
         var result: Int? = null

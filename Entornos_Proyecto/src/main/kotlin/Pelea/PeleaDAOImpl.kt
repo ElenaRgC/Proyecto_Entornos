@@ -22,29 +22,7 @@ class PeleaDAOImpl: PeleaDAO, Implementacion(){
         conexion.desconectar()
         return pelea
     }
-    override fun insertarLista(c:ArrayList<Pelea>):ArrayList<Pelea>{
-        conexion.conectar()
-        var result:Int?=null
-        var ps: PreparedStatement? = null
-        var listaNoInsertados = ArrayList<Pelea>()
 
-        val query = Constantes.pelea_sql_insert
-        ps = conexion.getPreparedStatement(query)
-        for (i in c){
-            try {
-                ps?.setString(1, i.nombrePP)
-                ps?.setString(2, i.nombreJJ)
-
-                result = ps?.executeUpdate()
-            }catch (e:Exception){
-                //println("no Se puede insertar ${i.codigo}")
-                listaNoInsertados.add(i)
-            }
-        }
-        ps?.close()
-        conexion.desconectar()
-        return listaNoInsertados
-    }
     override fun insertarFila(pelea: Pelea): Boolean {
         var result: Int? = null
         var ps: PreparedStatement? = null

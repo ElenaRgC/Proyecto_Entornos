@@ -1,6 +1,6 @@
 package Personaje
-import Clases.Constantes
 import Clases.ConexionBD
+import Clases.Constantes
 import Clases.Implementacion
 import java.sql.PreparedStatement
 import java.sql.SQLException
@@ -14,38 +14,12 @@ class PersonajeDAOImpl:PersonajeDAO, Implementacion() {
         val rs = st?.executeQuery(query)
         val personaje = ArrayList<Personaje>()
         while (rs?.next() == true) {
-            val perso = Personaje(rs.getString(Constantes.nombrePPP),rs.getInt(Constantes.nivelP),  rs.getString(
-                Constantes.clase),rs.getString(Constantes.descripcionP))
+            val perso = Personaje(rs.getString(Constantes.nombrePPP),rs.getInt(Constantes.nivelP),  rs.getString(Constantes.clase),rs.getString(Constantes.descripcionP))
             personaje.add(perso)
         }
         st?.close()
         conexion.desconectar()
         return personaje
-    }
-    override fun insertarLista(c:ArrayList<Personaje>):ArrayList<Personaje>{
-        conexion.conectar()
-        var result:Int?=null
-        var ps: PreparedStatement? = null
-        var listaNoInsertados = ArrayList<Personaje>()
-
-        val query = Constantes.personaje_sql_insert
-        ps = conexion.getPreparedStatement(query)
-        for (i in c){
-            try {
-                ps?.setString(1, i.nombrePPP)
-                ps?.setInt(2, i.nivelP)
-                ps?.setString(3, i.clase)
-                ps?.setString(4, i.descripcionP)
-
-                result = ps?.executeUpdate()
-            }catch (e:Exception){
-                //println("no Se puede insertar ${i.codigo}")
-                listaNoInsertados.add(i)
-            }
-        }
-        ps?.close()
-        conexion.desconectar()
-        return listaNoInsertados
     }
 
     override fun insertarFila(personaje: Personaje): Boolean {
@@ -68,16 +42,6 @@ class PersonajeDAOImpl:PersonajeDAO, Implementacion() {
         }
         return result == 1
     }
-
-    override fun borrarFila(nombre: String): Boolean {
-        conexion.conectar()
-        val query = "DELETE FROM personaje WHERE nombre = ?"
-        val ps = conexion.getPreparedStatement(query)
-        ps?.setString(1, nombre)
-        val result = ps?.executeUpdate()
-        ps?.close()
-        conexion.desconectar()
-        return result == 1
 
     override fun recibirDescripcion(nombrePersonaje: String): String? {
         var result: String? = null
