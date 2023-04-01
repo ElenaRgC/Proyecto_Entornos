@@ -1,33 +1,37 @@
-# Proyecto Entornos
+# Índice
 
-## Miembros
-
+## 1. Miembros del equipo
 - [Patricia](https://github.com/patrimj)
 - [Marina](https://github.com/demon-for-arcangel)
 - [Ian](https://github.com/Hellrayser)
 - [Elena](https://github.com/ElenaRgC)
 
-## Requisitos mínimos del proyecto:
+## 2. Descripción de la base de datos
+- Explicación de la temática de la base de datos.
+- Lista de las tablas.
+- Diagrama Entidad-Relación.
+- Esquema relacional.
 
-- Una base de datos con mínimo tres tablas (5 campos cada una) – La BBDD tiene que ser ORACLE (Se puede utilizar la BBDD de supermercados del módulo de base de datos)
-- Descripción del programa en Kotlin.
-  - Listas las tablas y poder seleccionar una de ellas
-  - Listas todas las operaciones que podemos realizar sobre esa tabla – (listar, insertar, borrar, modificar)
-  - Según lo que se haya seleccionado pedir los datos.
-  - Mostar los resultados.
+## 3. Descripción general del programa en Kotlin
+- Explicación del objetivo y funcionalidades del programa.
+- Descripción de las clases principales.
 
-## Git y GitHub
+## 4. Documentación técnica
+- Conexión con la base de datos mediante JDBC.
+- Diagrama (o índice o cómo sea) de los parámetros y funciones de cada clase.
+- Explicación de las funciones más importantes.
+  - Conexión a la base de datos.
+  - Añadir filas.
+  - Modificar campos.
+  - Borrar filas.
+  - Menús.
 
-Mínimo tiene que tener una versión por cada uno de los puntos de descripción del programa.
+## 5. Documentación del cliente
+- Explicación de cómo utilizar el programa.
+- Ejemplos de uso del programa.
 
-- Versión de pruebas unitarias
-- Versión de refactorización.
-- Versión de documentación
+## 6. Rama de refactorización
 
-## Documentación
+## 7. Rama de documentación
 
-- Se tiene que entregar una documentación técnica y una documentación de uso del cliente.
-- El proyecto entero en .zip.
-- Enlace a GITHUB.
-- Defensa del trabajo.
-- Planificación del proyecto con herramienta. Ej: Trello.
+## 8. Rama de pruebas unitarias
