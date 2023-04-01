@@ -48,8 +48,5 @@ class Constantes {
         val fecha= "fecha"
 
 
-        val ficheroPelea="Pelea.txt"
-
-
     }
 }
