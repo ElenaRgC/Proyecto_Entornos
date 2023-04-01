@@ -1,6 +1,8 @@
 package Pelea
 
-class Pelea {
+import Clases.Fila
+
+class Pelea: Fila {
     var nombrePP:String=""
     var nombreJJ:String=""
 
@@ -11,6 +13,6 @@ class Pelea {
     }
 
     override fun toString(): String {
-        return "Habilidad.Habilidad(nombre personaje=$nombrePP, nombre jefe='$nombreJJ')"
+        return "Personaje= $nombrePP, Jefe= $nombreJJ"
     }
 }

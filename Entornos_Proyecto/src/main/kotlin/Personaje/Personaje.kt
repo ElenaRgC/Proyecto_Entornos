@@ -1,6 +1,8 @@
 package Personaje
 
-class Personaje {
+import Clases.Fila
+
+class Personaje: Fila {
     var nombrePPP:String=""
     var nivelP:Int =0
     var clase:String=""
@@ -16,6 +18,6 @@ class Personaje {
     }
 
     override fun toString(): String {
-        return "Personaje.Personaje(nombre='$nombrePPP',nivel=$nivelP, elemento='$clase', descripcion='$descripcionP')"
+        return "$nombrePPP: Nivel= $nivelP, Elemento= $clase, Descripcion= $descripcionP"
     }
 }

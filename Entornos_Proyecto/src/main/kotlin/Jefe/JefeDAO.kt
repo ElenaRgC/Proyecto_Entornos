@@ -5,4 +5,5 @@ interface JefeDAO {
     fun insertarLista(c:ArrayList<Jefe>):ArrayList<Jefe>
     fun insertarFila(jefe: Jefe): Boolean
     fun recibirDescripcion(nombreJefe: String): String?
+    fun borrarFila(nombre: String): Boolean
 }

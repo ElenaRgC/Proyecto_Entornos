@@ -1,12 +1,12 @@
 package Pelea
 
-import ConexionBD
-import Constantes
-import Habilidad.Habilidad
+import Clases.ConexionBD
+import Clases.Constantes
+import Clases.Implementacion
 import java.sql.PreparedStatement
 import java.sql.SQLException
 
-class PeleaDAOImpl: PeleaDAO{
+class PeleaDAOImpl: PeleaDAO, Implementacion(){
     private val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
     override fun todosLosCampos(): List<Pelea> {
         conexion.conectar()
@@ -61,6 +61,18 @@ class PeleaDAOImpl: PeleaDAO{
             ps?.close()
             conexion.desconectar()
         }
+        return result == 1
+    }
+
+    override fun borrarFila(nombre: String): Boolean {
+        conexion.conectar()
+        val query = "DELETE FROM pelea WHERE nom_personaje = ? OR nom_jefe = ?"
+        val ps = conexion.getPreparedStatement(query)
+        ps?.setString(1, nombre)
+        ps?.setString(2, nombre)
+        val result = ps?.executeUpdate()
+        ps?.close()
+        conexion.desconectar()
         return result == 1
     }
 

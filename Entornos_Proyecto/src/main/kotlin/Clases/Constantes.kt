@@ -1,3 +1,5 @@
+package Clases
+
 class Constantes {
     companion object {
         val url="jdbc:mysql://localhost/diablo"
@@ -13,7 +15,7 @@ class Constantes {
         val elemento= "elemento"
         val descripcion= "descripcion"
         val dano= "dano"
-        val nombreP= "nombre"
+        val nombreP= "nom_personaje"
 
         val ficheroHabilidad="Habilidad.txt"
 

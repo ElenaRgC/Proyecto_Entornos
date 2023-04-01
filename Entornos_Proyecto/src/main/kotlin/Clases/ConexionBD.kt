@@ -1,3 +1,5 @@
+package Clases
+
 import java.sql.*
 
 class ConexionBD {
@@ -36,5 +38,20 @@ class ConexionBD {
 
     fun getPreparedStatement(sql: String): PreparedStatement? {
         return conn?.prepareStatement(sql)
+    }
+
+    fun devolverTablas(): ArrayList<String> {
+        var tablas = ArrayList<String>()
+        val meta = conn?.metaData
+        val tiposTabla = arrayOf("TABLE")
+
+        val result = meta?.getTables(null, null, null, tiposTabla)
+
+        while (result?.next() == true) {
+            val nombreTabla = result.getString("TABLE_NAME")
+            tablas.add(nombreTabla)
+        }
+
+        return tablas
     }
 }

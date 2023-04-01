@@ -1,11 +1,12 @@
 package Habilidad
 
-import ConexionBD
-import Constantes
+import Clases.ConexionBD
+import Clases.Constantes
+import Clases.Implementacion
 import java.sql.PreparedStatement
 import java.sql.SQLException
 
-class HabilidadDAOImpl: HabilidadDAO{
+class HabilidadDAOImpl: HabilidadDAO, Implementacion() {
     private val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
     override fun todosLosCampos(): List<Habilidad> {
         conexion.conectar()
@@ -14,7 +15,9 @@ class HabilidadDAOImpl: HabilidadDAO{
         val rs = st?.executeQuery(query)
         val habilidad = ArrayList<Habilidad>()
         while (rs?.next() == true) {
-            val habilidd = Habilidad(rs.getInt(Constantes.nivel), rs.getString(Constantes.nombre), rs.getString(Constantes.elemento), rs.getString(Constantes.descripcion),rs.getInt(Constantes.dano),rs.getString(Constantes.nombreP))
+            val habilidd = Habilidad(rs.getInt(Constantes.nivel), rs.getString(Constantes.nombre), rs.getString(
+                Constantes.elemento), rs.getString(Constantes.descripcion),rs.getInt(Constantes.dano),rs.getString(
+                Constantes.nombreP))
             habilidad.add(habilidd)
         }
         st?.close()
@@ -90,5 +93,16 @@ class HabilidadDAOImpl: HabilidadDAO{
             conexion.desconectar()
         }
         return result
+    }
+
+    override fun borrarFila(nombre: String): Boolean {
+        conexion.conectar()
+        val query = "DELETE FROM habilidad WHERE nombre = ?"
+        val ps = conexion.getPreparedStatement(query)
+        ps?.setString(1, nombre)
+        val result = ps?.executeUpdate()
+        ps?.close()
+        conexion.desconectar()
+        return result == 1
     }
 }

@@ -1,13 +1,12 @@
 package Jefe
 
-import ConexionBD
-import Constantes
-import Habilidad.Habilidad
-import Jefe.Jefe
+import Clases.ConexionBD
+import Clases.Constantes
+import Clases.Implementacion
 import java.sql.PreparedStatement
 import java.sql.SQLException
 
-class JefeDAOImpl:JefeDAO {
+class JefeDAOImpl:JefeDAO, Implementacion() {
 
     private val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
     override fun todosLosCampos(): List<Jefe> {
@@ -17,7 +16,8 @@ class JefeDAOImpl:JefeDAO {
         val rs = st?.executeQuery(query)
         val jefe = ArrayList<Jefe>()
         while (rs?.next() == true) {
-            val jefee = Jefe(rs.getInt(Constantes.nivelJ), rs.getString(Constantes.nombreJ), rs.getInt(Constantes.vida), rs.getString(Constantes.dificultad),rs.getString(Constantes.descripcionJ))
+            val jefee = Jefe(rs.getInt(Constantes.nivelJ), rs.getString(Constantes.nombreJ), rs.getInt(Constantes.vida), rs.getString(
+                Constantes.dificultad),rs.getString(Constantes.descripcionJ))
             jefe.add(jefee)
         }
         st?.close()
@@ -93,5 +93,16 @@ class JefeDAOImpl:JefeDAO {
             conexion.desconectar()
         }
         return result
+    }
+
+    override fun borrarFila(nombre: String): Boolean {
+        conexion.conectar()
+        val query = "DELETE FROM jefe WHERE nombre = ?"
+        val ps = conexion.getPreparedStatement(query)
+        ps?.setString(1, nombre)
+        val result = ps?.executeUpdate()
+        ps?.close()
+        conexion.desconectar()
+        return result == 1
     }
 }

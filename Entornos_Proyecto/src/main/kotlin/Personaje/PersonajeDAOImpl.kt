@@ -1,10 +1,11 @@
 package Personaje
-import ConexionBD
-import Habilidad.Habilidad
+import Clases.Constantes
+import Clases.ConexionBD
+import Clases.Implementacion
 import java.sql.PreparedStatement
 import java.sql.SQLException
 
-class PersonajeDAOImpl:PersonajeDAO {
+class PersonajeDAOImpl:PersonajeDAO, Implementacion() {
     private val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
     override fun todosLosCampos(): List<Personaje> {
         conexion.conectar()
@@ -13,7 +14,8 @@ class PersonajeDAOImpl:PersonajeDAO {
         val rs = st?.executeQuery(query)
         val personaje = ArrayList<Personaje>()
         while (rs?.next() == true) {
-            val perso = Personaje(rs.getString(Constantes.nombrePPP),rs.getInt(Constantes.nivelP),  rs.getString(Constantes.clase),rs.getString(Constantes.descripcionP))
+            val perso = Personaje(rs.getString(Constantes.nombrePPP),rs.getInt(Constantes.nivelP),  rs.getString(
+                Constantes.clase),rs.getString(Constantes.descripcionP))
             personaje.add(perso)
         }
         st?.close()
@@ -66,6 +68,16 @@ class PersonajeDAOImpl:PersonajeDAO {
         }
         return result == 1
     }
+
+    override fun borrarFila(nombre: String): Boolean {
+        conexion.conectar()
+        val query = "DELETE FROM personaje WHERE nombre = ?"
+        val ps = conexion.getPreparedStatement(query)
+        ps?.setString(1, nombre)
+        val result = ps?.executeUpdate()
+        ps?.close()
+        conexion.desconectar()
+        return result == 1
 
     override fun recibirDescripcion(nombrePersonaje: String): String? {
         var result: String? = null
