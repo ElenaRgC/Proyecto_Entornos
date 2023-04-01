@@ -1,27 +1,11 @@
 import Clases.ConexionBD
 import Clases.Constantes
-import Habilidad.*
-import Jefe.*
 import Menus.ejecutarOpcionMenu
 import Menus.menuTabla
 import Menus.mostrarMenuOpciones
-import Pelea.*
-import Personaje.*
 import java.sql.SQLException
 
-fun main(args: Array<String>) {
-    val HabilidadDAO = HabilidadDAOImpl()
-    val HabilidadFichero = HabilidadFichero()
-
-    val JefeDAO = JefeDAOImpl()
-    val JefeFichero = JefeFichero()
-
-    val PeleaDAO = PeleaDAOImpl()
-    val PeleaFichero = PeleaFichero()
-
-    val PersonajeDAO = PersonajeDAOImpl()
-    val PersonajeFichero = PersonajeFichero()
-
+fun main() {
     val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
 
 
