@@ -1,4 +1,4 @@
-package Menus
+package Funciones
 
 fun mostrarMenuOpciones(nombreTabla: String): String {
     print("Que quieres hacer con la tabla ${nombreTabla.uppercase()}?")

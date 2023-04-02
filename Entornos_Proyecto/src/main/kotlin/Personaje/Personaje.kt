@@ -8,6 +8,7 @@ class Personaje: Fila {
     var clase:String=""
     var descripcionP:String=""
 
+    constructor()
 
     constructor(noppp: String, ni: Int,  cl:String, desp:String ){
         this.nombrePPP = noppp

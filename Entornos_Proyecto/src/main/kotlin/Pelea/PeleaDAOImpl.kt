@@ -28,7 +28,7 @@ class PeleaDAOImpl: PeleaDAO, Implementacion(){
         var ps: PreparedStatement? = null
         try {
             conexion.conectar()
-            val query = "INSERT INTO habilidad (nombrePP, nombreJJ) VALUES (?, ?,)"
+            val query = "INSERT INTO habilidad (nombrePP, nombreJJ) VALUES (?, ?)"
             ps = conexion.getPreparedStatement(query)
             ps?.setString(1, pelea.nombrePP)
             ps?.setString(2, pelea.nombreJJ)
@@ -39,7 +39,7 @@ class PeleaDAOImpl: PeleaDAO, Implementacion(){
             ps?.close()
             conexion.desconectar()
         }
-        return result == 1
+        return result != null && result > 0
     }
 
     override fun borrarFila(nombre: String): Boolean {

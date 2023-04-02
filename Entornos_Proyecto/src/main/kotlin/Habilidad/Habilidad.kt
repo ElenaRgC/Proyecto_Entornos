@@ -10,6 +10,8 @@ class Habilidad: Fila {
     var dano:Int=0
     var nombreP:String=""
 
+    constructor()
+
     constructor(ni:Int, no:String, el:String, des:String, da:Int, np:String ){
         this.nivel = ni
         this.nombre = no

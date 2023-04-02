@@ -9,6 +9,7 @@ class Jefe: Fila {
     var dificultad:String=""
     var descripcionJ:String=""
 
+    constructor()
 
     constructor(ni:Int, no:String, vi:Int, di:String, des:String ){
         this.nivelJ = ni

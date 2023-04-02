@@ -6,6 +6,7 @@ class Pelea: Fila {
     var nombrePP:String=""
     var nombreJJ:String=""
 
+    constructor()
 
     constructor(np:String, nj:String ){
         this.nombrePP = np
