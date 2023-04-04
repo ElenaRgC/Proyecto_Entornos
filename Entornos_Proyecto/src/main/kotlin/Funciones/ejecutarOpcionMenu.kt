@@ -46,8 +46,8 @@ fun ejecutarOpcionMenu(nombreTabla: String, eleccion: String, implementacion: Im
         }
 
         "modificar", "3" -> {
-            implementacion.todosLosCampos()
             println("De que fila vas a modificar un campo?")
+            implementacion.todosLosCampos()
             println("Di su clave principal, normalmente el nombre.")
             var clavePrincipal = readln().trim().lowercase()
 
@@ -55,7 +55,7 @@ fun ejecutarOpcionMenu(nombreTabla: String, eleccion: String, implementacion: Im
             for (columna in columnas) {
                 print(columna + ", ")
             }
-            println("Que campo quieres modificar?")
+            println("que campo quieres modificar?")
             var nombreCampo = readln().trim().lowercase()
 
             println("Introduce el nuevo valor del campo:")
@@ -64,7 +64,7 @@ fun ejecutarOpcionMenu(nombreTabla: String, eleccion: String, implementacion: Im
             try {
                 implementacion.modificarCampo(clavePrincipal, nombreCampo, valorCampo)
                 println("El campo se ha modificado correctamente.")
-            } catch (e: SQLException) {
+            } catch (e: Exception) {
                 println(e.message)
                 println("No ha sido posible modificar el campo.")
             }

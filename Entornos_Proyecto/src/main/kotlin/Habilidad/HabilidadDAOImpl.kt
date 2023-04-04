@@ -85,7 +85,7 @@ class HabilidadDAOImpl: HabilidadDAO, Implementacion() {
         var ps: PreparedStatement? = null
         try {
             conexion.conectar()
-            val query = "UPDATE personaje SET $nombreCampo = ? WHERE nombre = ?"
+            val query = "UPDATE personaje SET $nombreCampo = ? WHERE LOWER(nombre) = ?"
             ps = conexion.getPreparedStatement(query)
             if (nombreCampo == "nivel" || nombreCampo == "dano") {
             ps?.setInt(1, nuevoValorCampo.toInt())

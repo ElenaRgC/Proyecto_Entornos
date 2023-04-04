@@ -59,7 +59,7 @@ class PeleaDAOImpl: PeleaDAO, Implementacion(){
         var ps: PreparedStatement? = null
         try {
             conexion.conectar()
-            val query = "UPDATE personaje SET $nombreCampo = ? WHERE (nom_personaje = ? OR nom_jefe = ?)"
+            val query = "UPDATE personaje SET $nombreCampo = ? WHERE (LOWER(nom_personaje) = ? OR LOWER(nom_jefe) = ?)"
             ps = conexion.getPreparedStatement(query)
             ps?.setString(1, nuevoValorCampo)
             ps?.setString(2, nombre)

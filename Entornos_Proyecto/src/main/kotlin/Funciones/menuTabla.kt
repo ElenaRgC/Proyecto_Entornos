@@ -11,29 +11,36 @@ fun menuTabla(nombreTabla: String): Implementacion {
     var objetoUsuario = Implementacion()
     var fila = listOf<Fila>()
 
-    when (nombreTabla) {
-        "habilidad" -> {
-            objetoUsuario = HabilidadDAOImpl()
-            fila = objetoUsuario.todosLosCampos()
-        }
+    do {
+        var continuar = true
+        when (nombreTabla) {
+            "habilidad" -> {
+                objetoUsuario = HabilidadDAOImpl()
+                fila = objetoUsuario.todosLosCampos()
+                continuar = false
+            }
 
-        "jefe" -> {
-            objetoUsuario = JefeDAOImpl()
-            fila = objetoUsuario.todosLosCampos()
-        }
+            "jefe" -> {
+                objetoUsuario = JefeDAOImpl()
+                fila = objetoUsuario.todosLosCampos()
+                continuar = false
+            }
 
-        "pelea" -> {
-            objetoUsuario = PeleaDAOImpl()
-            fila = objetoUsuario.todosLosCampos()
-        }
+            "pelea" -> {
+                objetoUsuario = PeleaDAOImpl()
+                fila = objetoUsuario.todosLosCampos()
+                continuar = false
+            }
 
-        "personaje" -> {
-            objetoUsuario = PersonajeDAOImpl()
-            fila = objetoUsuario.todosLosCampos()
-        }
+            "personaje" -> {
+                objetoUsuario = PersonajeDAOImpl()
+                fila = objetoUsuario.todosLosCampos()
+                continuar = false
+            }
 
-        else -> println("Seleccione una tabla de la lista anterior.")
-    }
+            else -> println("Seleccione una tabla de la lista anterior.")
+        }
+    } while (continuar)
 
     println("Lista de $nombreTabla:")
     fila.forEach { println(it) }

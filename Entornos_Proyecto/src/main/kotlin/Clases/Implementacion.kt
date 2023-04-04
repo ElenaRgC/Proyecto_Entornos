@@ -28,7 +28,7 @@ open class Implementacion {
     }
 
     open fun modificarCampo(clavePrincipal: String, nombreCampo: String, nuevoValor: String): Boolean {
-
+        return true
     }
 
 }
