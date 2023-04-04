@@ -79,4 +79,28 @@ class HabilidadDAOImpl: HabilidadDAO, Implementacion() {
         conexion.desconectar()
         return result == 1
     }
+
+    override fun modificarCampo(nombre: String, nombreCampo: String, nuevoValorCampo: String): Boolean {
+        var result: Int? = null
+        var ps: PreparedStatement? = null
+        try {
+            conexion.conectar()
+            val query = "UPDATE personaje SET $nombreCampo = ? WHERE nombre = ?"
+            ps = conexion.getPreparedStatement(query)
+            if (nombreCampo == "nivel" || nombreCampo == "dano") {
+            ps?.setInt(1, nuevoValorCampo.toInt())
+            } else {
+            ps?.setString(1, nuevoValorCampo)
+            }
+            ps?.setString(2, nombre)
+            result = ps?.executeUpdate()
+        } catch (e: SQLException) {
+            println(e.message)
+        } finally {
+            ps?.close()
+            conexion.desconectar()
+        }
+        return result == 1
+    }
+
 }

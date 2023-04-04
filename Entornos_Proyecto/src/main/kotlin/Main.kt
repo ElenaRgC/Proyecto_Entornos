@@ -1,10 +1,4 @@
-import Clases.ConexionBD
-import Clases.Constantes
-import Funciones.ejecutarOpcionMenu
-import Funciones.imprimirTablas
-import Funciones.menuTabla
-import Funciones.mostrarMenuOpciones
-import java.sql.SQLException
+import Funciones.*
 
 fun main() {
 

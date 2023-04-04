@@ -44,13 +44,32 @@ class PeleaDAOImpl: PeleaDAO, Implementacion(){
 
     override fun borrarFila(nombre: String): Boolean {
         conexion.conectar()
-        val query = "DELETE FROM pelea WHERE nom_personaje = ? OR nom_jefe = ?"
+        val query = "DELETE FROM pelea WHERE (nom_personaje = ? OR nom_jefe = ?)"
         val ps = conexion.getPreparedStatement(query)
         ps?.setString(1, nombre)
         ps?.setString(2, nombre)
         val result = ps?.executeUpdate()
         ps?.close()
         conexion.desconectar()
+        return result == 1
+    }
+
+    override fun modificarCampo(nombre: String, nombreCampo: String, nuevoValorCampo: String): Boolean {
+        var result: Int? = null
+        var ps: PreparedStatement? = null
+        try {
+            conexion.conectar()
+            val query = "UPDATE personaje SET $nombreCampo = ? WHERE (nom_personaje = ? OR nom_jefe = ?)"
+            ps = conexion.getPreparedStatement(query)
+            ps?.setString(1, nuevoValorCampo)
+            ps?.setString(2, nombre)
+            result = ps?.executeUpdate()
+        } catch (e: SQLException) {
+            println(e.message)
+        } finally {
+            ps?.close()
+            conexion.desconectar()
+        }
         return result == 1
     }
 
