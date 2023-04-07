@@ -2,7 +2,7 @@ package Funciones
 
 import Clases.Implementacion
 import java.sql.SQLException
-
+// esta función se encarga de ejecutar la opción de menú elegida por el usuario en una tabla específica.
 fun ejecutarOpcionMenu(nombreTabla: String, eleccion: String, implementacion: Implementacion): String {
 
     var nuevaEleccion = ""

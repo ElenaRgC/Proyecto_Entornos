@@ -6,7 +6,7 @@ import Habilidad.HabilidadDAOImpl
 import Jefe.JefeDAOImpl
 import Pelea.PeleaDAOImpl
 import Personaje.PersonajeDAOImpl
-
+//es una función que permite al usuario seleccionar una tabla de la base de datos y devolverle las diferentes funciones que se encuentran en la clase Implementacion
 fun menuTabla(nombreTabla: String): Implementacion {
     var objetoUsuario = Implementacion()
     var fila = listOf<Fila>()

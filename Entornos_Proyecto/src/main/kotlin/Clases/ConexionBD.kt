@@ -40,7 +40,7 @@ class ConexionBD {
         return conn?.prepareStatement(sql)
     }
 
-    fun devolverTablas(): ArrayList<String> {
+    fun devolverTablas(): ArrayList<String> { // la función devuelve la lista de nombres de las tablas almacenadas en la base de datos. Y es utilizada por imprimirTablas() para obtener los nombres de las tablas almacenadas en la base de datos y devolverlos como una lista de cadenas.
         var tablas = ArrayList<String>()
         val meta = conn?.metaData
         val tiposTabla = arrayOf("TABLE")

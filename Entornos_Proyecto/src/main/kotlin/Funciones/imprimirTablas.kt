@@ -4,7 +4,7 @@ import Clases.ConexionBD
 import Clases.Constantes
 import java.sql.SQLException
 
-fun imprimirTablas() {
+fun imprimirTablas() { // esta función sirve para mostrar en la consola los nombres de las tablas que están almacenadas en la base de datos a la que se conecta el programa.
     val conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
     conexion.conectar()
     try {

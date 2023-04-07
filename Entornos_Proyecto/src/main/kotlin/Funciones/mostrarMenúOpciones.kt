@@ -1,6 +1,6 @@
 package Funciones
 
-fun mostrarMenuOpciones(nombreTabla: String): String {
+fun mostrarMenuOpciones(nombreTabla: String): String { // en esta funcion se señalan las diferentes opciones de trabajo
     print("Que quieres hacer con la tabla ${nombreTabla.uppercase()}?")
     println(" (Introduzca la palabra indicada en mayúsculas o su número correspondiente.)")
     println("1. ANADIR una fila.")
