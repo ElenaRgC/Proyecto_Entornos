@@ -30,8 +30,21 @@ En resumen, la base de datos de Diablo IV está diseñada para ayudar a los juga
 
 
 ## 3. Descripción general del programa en Kotlin
-- Explicación del objetivo y funcionalidades del programa.
-- Descripción de las clases principales.
+
+• OBJETIVO Y FUNCIONALIDADES DEL PROGRAMA.
+Nuestro programa permite a jugadores de Diablo IV registrar en una base de datos sus personajes, habilidades, enemigos principales y qué personajes se han enfrentado a ellos.
+Cuando ejecuten el programa se les mostrará la lista de las tablas existentes y se les permitirá elegir con cuál quieren trabajar. Una vez elegida una tabla de las presentadas, podrán ver, añadir, modificar o eliminar datos de las mismas.
+
+• CLASES E INTERFACES:
+- Constantes: contiene los valores que no van a cambiar a lo largo del programa y vamos a usar con frecuencia, como los valores de acceso a la base de datos o los campos de las tablas. Permiten centralizar las constantes para poder cambiarlas en todo el proyecto a la vez si es necesario.
+- ConexionBD: permite conectar a la base de datos MySQL que definamos, así como crear las queries y lanzarlas desde otras funciones que llamen a un objeto de esta clase.
+- Fila: clase padre del resto de filas, que permite usar en una mismo objeto funciones de diferentes clases.
+- Personaje, habilidad, jefe y pelea. Estas clases heredan de la clase Fila, y tienen como parámetros los campos que existen en las tablas de la base de datos con las que comparten nombre.
+- Implementación: clase padre de las DAO implementadas, al igual que la clase Fila permite usar funciones del mismo nombre y clases distintas con el mismo objeto.
+- Interfaces DAO: permiten definir las funciones que emplearemos para realizar las consultas SQL como plantilla, evitando errores y creando un punto central en el que realizar modificaciones si la tabla cambia su estructura.
+- Clases DAO Implementadas: implementan las interfaces de DAO siguiendo la estructura de métodos indicada, conteniendo el código que permite conectar a la base de datos y ejecutar las consultas deseadas.
+
+...MÁS DOCUMENTADO EN LA ENTREGA
 
 ## 4. Documentación técnica
 - Conexión con la base de datos mediante JDBC.
